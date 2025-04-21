@@ -1,0 +1,35 @@
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and Upload to TestFlight"
+  lane :upload_staging_to_testflight do
+
+    # ✅ Build the app
+    build_app(
+      scheme: "staging",
+      workspace: "Runner.xcworkspace",
+      export_method: "app-store",
+      output_directory: "../build/ios/ipa",
+      output_name: "flutterBaseStaging.ipa",
+      export_options: {
+        provisioningProfiles: {
+          "com.masterly.flutterbasecodestg" => "masterly_flutterbasecode_ios_appstore"
+        }
+      }
+    )
+
+    upload_to_testflight(
+      ipa: "../build/ios/ipa/flutterBaseStaging.ipa",
+      api_key: {
+               key_id: ENV["APP_STORE_API_KEY_ID"],
+               issuer_id: ENV["APP_STORE_ISSUER_ID"],
+               key: ENV["APP_STORE_API_KEY_CONTENT"],
+               in_house: false
+            },
+      skip_waiting_for_build_processing: true,
+      skip_submission: true
+    )
+  end
+end
+
+
