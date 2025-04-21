@@ -121,7 +121,7 @@ jobs:
         run: flutter pub get
 
       - name: Flutter build ios (Prepare files)
-        run: flutter build ios --no-codesign
+        run: flutter build ios --flavor ${{ matrix.flavor }} --release --no-codesign
 
       - name: Install Fastlane
         run: gem install fastlane
