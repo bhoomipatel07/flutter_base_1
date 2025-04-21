@@ -117,6 +117,12 @@ jobs:
         run: |
           echo $STAGING_EXPORT_PLIST_BASE64 | base64 --decode > ios/ExportOptions.plist
 
+      - name: Flutter pub get
+        run: flutter pub get
+
+      - name: Flutter build ios (Prepare files)
+        run: flutter build ios --no-codesign
+
       - name: Install Fastlane
         run: gem install fastlane
 
