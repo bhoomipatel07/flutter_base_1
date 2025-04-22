@@ -4,6 +4,11 @@ platform :ios do
   desc "Build and Upload to TestFlight"
   lane :upload_staging_to_testflight do
 
+    # Step 1: Auto-increment iOS build number
+      increment_build_number(
+        xcodeproj: "ios/Runner.xcodeproj"
+      )
+
     # ✅ Build the app
     build_app(
       scheme: "staging",
