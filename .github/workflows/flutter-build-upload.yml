@@ -136,21 +136,3 @@ jobs:
         run: |
           cd ios
           fastlane upload_staging_to_testflight --verbose
-
-
-#      - name: Set up environment variables for Fastlane
-#        run: |
-#            echo "APP_STORE_API_KEY_ID=${{ secrets.APP_STORE_API_KEY_ID }}" >> $GITHUB_ENV
-#            echo "APP_STORE_ISSUER_ID=${{ secrets.APP_STORE_ISSUER_ID }}" >> $GITHUB_ENV
-#            echo "APP_STORE_API_KEY_CONTENT=${{ secrets.APP_STORE_API_KEY_CONTENT }}" >> $GITHUB_ENV
-#            echo "FASTLANE_APPLE_ID=${{ secrets.FASTLANE_APPLE_ID }}" >> $GITHUB_ENV
-#            echo "FASTLANE_TEAM_ID=${{ secrets.FASTLANE_TEAM_ID }}" >> $GITHUB_ENV
-#        shell: bash
-
-#      - name: Build iOS
-#        run: flutter build ios --flavor staging --release --no-codesign
-
-#      - name: Run Fastlane
-#        run: |
-#          cd ios
-#          fastlane ios upload_staging_to_testflight --verbose
